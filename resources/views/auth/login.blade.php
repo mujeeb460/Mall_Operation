@@ -84,22 +84,31 @@
                     <p>Welcome back you've been missed!</p>
                 </div>
                 <div class="account-area">
-                    <form action="" method="post">
+                    <form action="{{route('login')}}" method="post"
+                                  enctype="multipart/form-data">
+
+                                  @csrf
                         <div class="mb-3">
                             <label class="form-label" for="name">Username</label>
-                            <input type="text" id="name" class="form-control" placeholder="Type Username Here">
+                            <input type="text" name="phone" id="name" class="form-control" placeholder="Type Username Here">
+                            @error('phone')
+                                <small class="text-danger">{{ $message }}</small>
+                            @endif
                         </div>
                         <div>
                             <label class="form-label" for="password">Password</label>
                             <div class="mb-3 input-group input-group-icon">
-                                <input type="password" id="password" class="form-control dz-password" placeholder="Type Password Here">
+                                <input type="password" name="password" id="password" class="form-control dz-password" placeholder="Type Password Here">
                                 <span class="input-group-text show-pass"> 
                                     <i class="icon feather icon-eye-off eye-close"></i>
                                     <i class="icon feather icon-eye eye-open"></i>
                                 </span>
                             </div>
+                            @error('password')
+                                <small class="text-danger">{{ $message }}</small>
+                            @endif
                         </div>
-                        <a href="#" class="btn mb-3 btn-primary w-100">Login</a>
+                        <button class="btn mb-3 btn-primary w-100" type="submit">Login</button>
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <a href="forgot-password.html" class="btn-link text-link">Forgot password?</a>
                             <a href="forgot-password.html" class="btn-link">Reset here</a>
