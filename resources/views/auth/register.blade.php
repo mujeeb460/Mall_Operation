@@ -84,46 +84,62 @@
                     <p>Create an account to continue!</p>
                 </div>
                 <div class="account-area">
-                    <form>
+                    <form action="{{route('register')}}" method="post"
+                                  enctype="multipart/form-data">
+                                  @csrf
                         <div class="mb-3">
-                            <label class="form-label" for="name">Reference Code</label>
-                            <input type="text" id="name" class="form-control" placeholder="873873" disabled="">
+                            <label class="form-label" for="reference_code">Reference Code</label>
+                            <input type="text" name="reference_code" id="reference_code" class="form-control" placeholder="" value="873873">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="name">Phone Number(+92)</label>
-                            <input type="text" id="phone" class="form-control" placeholder="Phone Number(+92)">
+                            <label class="form-label" for="phone">Phone Number(+92)</label>
+                            <input type="text" name="phone" id="phone" class="form-control" value="{{old('phone')}}" placeholder="Phone Number(+92)">
+                            @error('phone')
+                                <small class="text-danger">{{ $message }}</small>
+                            @endif
                         </div>
                         <div>
                             <label class="form-label" for="password">Password</label>
                             <div class="mb-3 input-group input-group-icon">
-                                <input type="password" id="password" class="form-control dz-password" placeholder="Type Password Here">
+                                <input type="password" name="password" id="password" class="form-control dz-password" placeholder="Type Password Here">
                                 <span class="input-group-text show-pass"> 
                                     <i class="icon feather icon-eye-off eye-close"></i>
                                     <i class="icon feather icon-eye eye-open"></i>
                                 </span>
                             </div>
+                            @error('password')
+                                <small class="text-danger">{{ $message }}</small>
+                            @endif
                         </div>
                         <div>
-                            <label class="form-label" for="confirm_password">Confirm Password</label>
+                            <label class="form-label" for="password_confirmation">Confirm Password</label>
                             <div class="mb-3 input-group input-group-icon">
-                                <input type="password" id="confirm_password" class="form-control dz-password" placeholder="Confirm Password">
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control dz-password" placeholder="Confirm Password">
                                 <span class="input-group-text show-pass"> 
                                     <i class="icon feather icon-eye-off eye-close"></i>
                                     <i class="icon feather icon-eye eye-open"></i>
-                                </span> 
+                                </span>
                             </div>
+                            @error('password_confirmation')
+                                <small class="text-danger">{{ $message }}</small>
+                            @endif
                         </div>
                         <div>
-                            <label class="form-label" for="confirm_password">Withdraw Password</label>
+                            <label class="form-label" for="withdraw_password">Withdraw Password</label>
                             <div class="mb-3 input-group input-group-icon">
-                                <input type="password" id="withdraw_password" class="form-control dz-password" placeholder="Withdraw Password">
+                                <input type="password" name="withdraw_password" id="withdraw_password" class="form-control dz-password" placeholder="Withdraw Password">
                                 <span class="input-group-text show-pass"> 
                                     <i class="icon feather icon-eye-off eye-close"></i>
                                     <i class="icon feather icon-eye eye-open"></i>
-                                </span> 
+                                </span>
                             </div>
+                            @error('withdraw_password')
+                                <small class="text-danger">{{ $message }}</small>
+                            @endif 
                         </div>
-                        <a href="#" class="btn mb-3 btn-primary w-100">Register</a>
+                        <button class="btn mb-3 btn-primary w-100" type="submit">Register</button>
+
+                    </form>
                         <div class="form-check mb-4">
                             <input class="form-check-input" type="checkbox" value="" id="Checked-1">
                             <label class="form-check-label" for="Checked-1">I agree to all Terms, Privacy Policy and fees</label>
@@ -132,7 +148,6 @@
                             <span>Already have an account ?</span>
                         </div>
                         <a href="{{ route('login') }}" class="btn btn-outline-primary w-100">Login</a>
-                    </form>  
                 </div>
             </div>
         </div>
