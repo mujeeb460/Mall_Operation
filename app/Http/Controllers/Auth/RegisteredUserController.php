@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Models\Deposit;
+
 
 class RegisteredUserController extends Controller
 {
@@ -46,10 +48,23 @@ class RegisteredUserController extends Controller
             'withdraw_password' => Hash::make($request->withdraw_password),
         ]);
 
+        Deposit::insert([
+            'deposit_amount' => 300,
+            'deposit_date' => today(),
+            'transaction_id' => 123,
+            'bank' => 'Bonus',
+            'user_id' => $user->id,
+            'status' => 1
+        ]);
+
         event(new Registered($user));
 
         Auth::login($user);
 
+        session()->flash('congratulations', 'Congratulations on your successful registration!');
+        
         return redirect(route('dashboard', absolute: false));
     }
+
+    
 }

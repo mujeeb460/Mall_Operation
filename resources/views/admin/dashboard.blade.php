@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 @section('content')
 
 <style>
@@ -20,48 +20,38 @@
         </style>
 
 <div class="page-content space-top p-b65">
-        <div class="container py-0">
-            <!-- Banner -->
-            <div class="dz-banner shop-card m-1">
-                <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <!-- Indicators -->
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
+        <div class="container py-2">
 
-                    <!-- Slides -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="dz-media">
-                                <img src="assets/images/banner/banner4.jpeg" class="d-block w-100" alt="Banner 1">
+
+            <!-- Account Balance -->
+                <div class="container">
+                    <div class="product-offer text-white">
+                        <div class="row bg-primary shop-card p-3">
+                            <div class="col-12">
+                                <h5 class="text-white">Admin Pannel</h5>
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="dz-media">
-                                <img src="assets/images/banner/banner7.jpeg" class="d-block w-100" alt="Banner 2">
+                            <div class="col-6">
+                                <span>Username</span>
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="dz-media">
-                                <img src="assets/images/banner/pic3.png" class="d-block w-100" alt="Banner 3">
+                            <div class="col-6 text-end">
+                                <span>{{auth()->user()->phone}}</span>
+                            </div>
+                            <div class="col-12">
+                                
+                            </div>
+                            <div class="col-6">
+                               
+                            </div>
+                            <div class="col-6 text-end">
+                                
                             </div>
                         </div>
                     </div>
-
-                    <!-- Controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-            </div>
-            <!-- Banner End -->
+            
+            <!-- Account Balance End -->
+
+
             
            
             
@@ -303,46 +293,7 @@
             </div>
             <!-- Product Item list End -->
             
-            <!-- Top Selection Start -->
-
-            <div class="product-offer">
-                <div class="container mt-4">
-                    <div class="row g-3">
-                      <div class="col-6 col-md-4 d-flex align-items-center box-second">
-                        <a href="{{route('profile')}}" class="d-flex align-items-center text-decoration-none">
-                          <img src="{{asset('assets/images/resume.png')}}" alt="Company Profile" width="30" class="circle">
-                          <div class="ms-3 font-bold">Company Profile</div>
-                        </a>
-                      </div>
-                      <div class="col-6 col-md-4 d-flex align-items-center box-second">
-                        <a href="{{route('description')}}" class="d-flex align-items-center text-decoration-none">
-                          <img src="{{asset('assets/images/three.png')}}" alt="Rule description" width="30" class="circle">
-                          <div class="ms-3 font-bold">Rule description</div>
-                        </a>
-                      </div>
-                      <div class="col-6 col-md-4 d-flex align-items-center box-second">
-                        <a href="{{route('cooperation')}}" class="d-flex align-items-center text-decoration-none">
-                          <img src="{{asset('assets/images/support.png')}}" alt="Agent cooperation" width="30" class="circle">
-                          <div class="ms-3 font-bold">Agent cooperation</div>
-                        </a>
-                      </div>
-                      <div class="col-6 col-md-4 d-flex align-items-center box-second">
-                        <a href="{{route('qualification')}}" class="d-flex align-items-center text-decoration-none">
-                          <img src="{{asset('assets/images/certificate.png')}}" alt="Company qualifications" width="30" class="circle">
-                          <div class="ms-3 font-bold">Company qualifications</div>
-                        </a>
-                      </div>
-                      <div class="col-6 col-md-4 d-flex align-items-center box-second">
-                        <a href="{{route('faq')}}" class="d-flex align-items-center text-decoration-none">
-                          <img src="{{asset('assets/images/question.png')}}" alt="FAQ" width="30" class="circle">
-                          <div class="ms-3 font-bold">FAQ</div>
-                        </a>
-                      </div>
-                    </div>
-                </div> 
-            </div> 
-            
-            <!-- Top Selection End -->
+           
         </div>
-    </div>
+</div>
 @endsection

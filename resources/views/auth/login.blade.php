@@ -109,11 +109,11 @@
                             @endif
                         </div>
                         <button class="btn mb-3 btn-primary w-100" type="submit">Login</button>
-                        <div class="d-flex justify-content-between align-items-center mb-4">
+                       <!--  <div class="d-flex justify-content-between align-items-center mb-4">
                             <a href="forgot-password.html" class="btn-link text-link">Forgot password?</a>
                             <a href="forgot-password.html" class="btn-link">Reset here</a>
-                        </div>
-                        <a href="register.html" class="btn-link text-center mb-3 text-dark">Don’t have an account?</a>
+                        </div> -->
+                        <a href="{{ route('register') }}" class="btn-link text-center mb-3 text-dark">Don’t have an account?</a>
                         <a href="{{ route('register') }}" class="btn mb-3 btn-outline-primary w-100">Register now</a>
                     </form>  
                 </div>

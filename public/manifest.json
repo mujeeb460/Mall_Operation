@@ -1,0 +1,16 @@
+{
+  "name": "Mall Operation",
+  "short_name": "Mall Op",
+  "description": "Mall Operation Management System",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "assets/images/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

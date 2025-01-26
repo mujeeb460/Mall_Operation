@@ -48,4 +48,46 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function deposits()
+    {
+        return $this->hasMany(Deposit::class,'user_id','id');
+    }
+
+    public function withdraws()
+    {
+        return $this->hasMany(Withdraw::class,'user_id','id');
+    }
+
+    public function upgrade_packages()
+    {
+        return $this->hasMany(UpgradePackage::class,'user_id','id');
+    }
+
+    public function active_packages()
+    {
+        return $this->hasOne(ActivePackage::class,'user_id','id');
+    }
+
+    public function bonus()
+    {
+        return $this->hasMany(Bonus::class,'user_id','id');
+    }
+
+    public function total_balance()
+    {
+        $totalDeposit = $this->deposits()->where('status',1)->sum('deposit_amount');
+        // $totalUpgrade = $this->upgrade_packages()->sum('amount');
+        $totalBonus = $this->bonus()->sum('amount');
+
+        $totalWithdraw = $this->withdraws()->where('status',1)->sum('withdraw_amount');
+
+        return $totalDeposit + $totalBonus - $totalWithdraw;
+
+    }
+
+
+
+
 }

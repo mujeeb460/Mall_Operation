@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from wedo.dexignzone.com/xhtml/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Dec 2024 13:12:46 GMT -->
+<!-- Mirrored from wedo.dexignzone.com/xhtml/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Dec 2024 13:12:46 GMT -->
 <head>
     
     <!-- Title -->
@@ -80,20 +80,16 @@
                     <img class="logo-light" src="assets/images/logo-white.png" alt="">
                 </div>
                 <div class="section-head ps-0">
-                    <h2>Create account Free</h2>
-                    <p>Create an account to continue!</p>
+                    <h2>Admin Login</h2>
                 </div>
                 <div class="account-area">
-                    <form action="{{route('register')}}" method="post"
+                    <form action="{{route('form_login')}}" method="post"
                                   enctype="multipart/form-data">
+
                                   @csrf
                         <div class="mb-3">
-                            <label class="form-label" for="reference_code">Reference Code</label>
-                            <input type="text" name="" id="reference_code" class="form-control" placeholder="" value="" readonly="">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="phone">Phone Number(+92)</label>
-                            <input type="text" name="phone" id="phone" class="form-control" value="{{old('phone')}}" placeholder="Phone Number(+92)">
+                            <label class="form-label" for="name">Username</label>
+                            <input type="text" name="phone" id="name" class="form-control" placeholder="Type Username Here">
                             @error('phone')
                                 <small class="text-danger">{{ $message }}</small>
                             @endif
@@ -111,46 +107,14 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @endif
                         </div>
-                        <div>
-                            <label class="form-label" for="password_confirmation">Confirm Password</label>
-                            <div class="mb-3 input-group input-group-icon">
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control dz-password" placeholder="Confirm Password">
-                                <span class="input-group-text show-pass"> 
-                                    <i class="icon feather icon-eye-off eye-close"></i>
-                                    <i class="icon feather icon-eye eye-open"></i>
-                                </span>
-                            </div>
-                            @error('password_confirmation')
-                                <small class="text-danger">{{ $message }}</small>
-                            @endif
+                        <button class="btn mb-3 btn-primary w-100" type="submit">Login</button>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <a href="forgot-password.html" class="btn-link text-link">Forgot password?</a>
+                            <a href="forgot-password.html" class="btn-link">Reset here</a>
                         </div>
-                        <div>
-                            <label class="form-label" for="withdraw_password">Withdraw Password</label>
-                            <div class="mb-3 input-group input-group-icon">
-                                <input type="password" name="withdraw_password" id="withdraw_password" class="form-control dz-password" placeholder="Withdraw Password">
-                                <span class="input-group-text show-pass"> 
-                                    <i class="icon feather icon-eye-off eye-close"></i>
-                                    <i class="icon feather icon-eye eye-open"></i>
-                                </span>
-                            </div>
-                            @error('withdraw_password')
-                                <small class="text-danger">{{ $message }}</small>
-                            @endif 
-                        </div>
-                        <input type="hidden" name="reference_code" id="ref_code" class="form-control">
-                        <button class="btn mb-3 btn-primary w-100" type="submit">Register</button>
-
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" value="" id="Checked-1" required="">
-                            <label class="form-check-label" for="Checked-1">I agree to all Terms, Privacy Policy and fees</label>
-                        </div>
-
-                    </form>
-                        
-                        <div class="text-center text-dark mb-2">
-                            <span>Already have an account ?</span>
-                        </div>
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary w-100">Login</a>
+                        <a href="register.html" class="btn-link text-center mb-3 text-dark">Don’t have an account?</a>
+                        <a href="{{ route('register') }}" class="btn mb-3 btn-outline-primary w-100">Register now</a>
+                    </form>  
                 </div>
             </div>
         </div>
@@ -167,18 +131,7 @@
 <script src="assets/js/dz.carousel.js"></script><!-- Swiper -->
 <script src="assets/js/settings.js"></script>
 <script src="assets/js/custom.js"></script>
-
-<script type="text/javascript">
-     function generateReferenceCode() {
-        const randomCode = Math.floor(1000000 + Math.random() * 9000000);  // Generates a random number between 100000 and 999999
-        document.getElementById("reference_code").value = randomCode; 
-        document.getElementById("ref_code").value = randomCode; 
-    }
-
-    // Call the function to generate the reference code on page load
-    window.onload = generateReferenceCode;
-</script>
 </body>
 
-<!-- Mirrored from wedo.dexignzone.com/xhtml/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Dec 2024 13:12:47 GMT -->
+<!-- Mirrored from wedo.dexignzone.com/xhtml/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Dec 2024 13:12:46 GMT -->
 </html>

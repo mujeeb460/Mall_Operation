@@ -240,29 +240,26 @@
     <!-- Menubar -->
     <div class="menubar-area footer-fixed rounded-0 border-top">
         <div class="toolbar-inner menubar-nav">
-            <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+            <a href="{{ route('admin_dashboard') }}" class="nav-link {{ request()->routeIs('admin_dashboard') ? 'active' : '' }}">
                 <i class="icon feather icon-home"></i>
                 <span>Home</span>
             </a>
-            <a href="{{ route('tasks') }}" class="nav-link {{ request()->routeIs('tasks') ? 'active' : '' }}">
+            <a href="{{ route('get_users') }}" class="nav-link {{ request()->routeIs('get_users') ? 'active' : '' }}">
                 <i class="icon feather icon-grid"></i>
-                <span>Task</span>
+                <span>Users</span>
             </a>
-            <a href="{{ route('orders.index') }}" class="nav-link {{ request()->routeIs('orders.index') ? 'active' : '' }}">
-                <i class="icon feather icon-heart"></i>
-                <span>Order</span>
+            <a href="{{ route('get_deposits') }}" class="nav-link {{ request()->routeIs('get_deposits') ? 'active' : '' }}">
+                <i class="icon feather icon-dollar-sign"></i>
+                <span>Deposits</span>
             </a>
-            @if(auth()->user())
-                <a href="{{ route('mine') }}" class="nav-link {{ request()->routeIs('mine') ? 'active' : '' }}">
-                    <i class="icon feather icon-user"></i>
+            <a href="{{ route('get_withdraws') }}" class="nav-link {{ request()->routeIs('get_withdraws') ? 'active' : '' }}">
+                <i class="icon feather icon-dollar-sign"></i>
+                <span>Withdraws</span>
+            </a>
+            <a href="{{ route('admin_profile.index') }}" class="nav-link {{ request()->routeIs('admin_profile.index') ? 'active' : '' }}">
+                <i class="icon feather icon-user"></i>
                     <span>Mine</span>
-                </a>
-            @else
-                <a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">
-                    <i class="icon feather icon-user"></i>
-                    <span>Login</span>
-                </a>
-            @endif
+            </a>
         </div>
     </div>
     
