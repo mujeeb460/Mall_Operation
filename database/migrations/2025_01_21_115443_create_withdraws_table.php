@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date('withdraw_date')->nullable();
             $table->BigInteger('transaction_id')->nullable();
             $table->string('bank')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('account_title')->nullable();
             $table->BigInteger('user_id')->nullable();
             $table->string('status')->default(0);
             $table->timestamps();

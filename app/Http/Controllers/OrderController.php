@@ -27,7 +27,14 @@ class OrderController extends Controller
             ->where('remaining_tasks', '>', 0)
             ->orderBy('created_at', 'desc')
             ->first();
-        
+
+
+        if($upgraded_package)
+        {
+            $orderNumber = $user->orders()->where('package_id',$upgraded_package->package_id)->count();
+        }else{
+            $orderNumber = 0;
+        }
         // Get orders only for the current active package
         $orders = collect();
         if ($upgraded_package && $upgraded_package->package) {
@@ -40,6 +47,7 @@ class OrderController extends Controller
         return view('user.orders', [
             'upgraded_package' => $upgraded_package,
             'orders' => $orders,
+            'orderNumber' => $orderNumber
         ]);
     }
 

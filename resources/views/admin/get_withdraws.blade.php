@@ -58,6 +58,8 @@
                                                 <th>Withdraw Date</th>
                                                 <th>Transaction ID</th>
                                                 <th>Bank</th>
+                                                <th>Account No.</th>
+                                                <th>Account Title</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -71,6 +73,8 @@
                                                     <td>{{ $withdraw->withdraw_date }}</td>
                                                     <td>{{ $withdraw->transaction_id }}</td>
                                                     <td>{{ $withdraw->bank }}</td>
+                                                    <td>{{ $withdraw->account_number }}</td>
+                                                    <td>{{ $withdraw->account_title }}</td>
                                                     <td>
                                                         @if($withdraw->status == 0)
                                                             <span class="badge badge-primary">Pending</span>

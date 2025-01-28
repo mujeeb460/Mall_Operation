@@ -147,5 +147,12 @@ class AdminController extends Controller
     }
 
 
+     public function admin_help()
+    {
+        return view('admin.admin_help', [
+        ]);
+    }
+
+
 
 }

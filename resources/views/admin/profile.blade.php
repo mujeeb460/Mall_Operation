@@ -71,7 +71,7 @@
                             </a>
                         </li>
                         <li class="col-6">                          
-                            <a href="help.html">
+                            <a href="{{route('admin_help')}}">
                                 <div class="dz-icon-box">
                                     <i class="icon feather icon-headphones"></i>
                                 </div>

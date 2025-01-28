@@ -66,25 +66,64 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="withdraw_amount">Withdraw Amount</label>
-                            <input type="text" name="withdraw_amount" id="withdraw_amount" class="form-control" placeholder="Enter Amount" value="">
+                            <input type="text" name="withdraw_amount" id="withdraw_amount" class="form-control" placeholder="Enter Amount" value="{{old('withdraw_amount')}}">
                             @error('deposit_amount')
                                 <small class="text-danger">{{ $message }}</small>
                             @endif
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="bank_name">Bank</label>
-                            <input type="text" name="bank_name" id="bank_name" class="form-control" value="{{old('bank_name')}}" placeholder="">
+                            <select name="bank_name" id="bank_name" class="form-control" required="">
+                                <option value="">Select Bank</option>
+                                <option value="Easypaisa">Easypaisa</option>
+                                <option value="Jazzcash">Jazzcash</option>
+                                <option value="Bank AL Habbib">Bank AL Habib</option>
+                                <option value="Allied">Allied</option>
+                                <option value="Sindh">Sindh</option>
+                                <option value="Bank of Panjab">Bank of Panjab</option>
+                                <option value="National Bank">National Bank</option>
+                                <option value="Nayapay">Nayapay</option>
+                                <option value="Sadapay">Sadapay</option>
+                                <option value="Faysal Bank">Faysal Bank</option>
+                                <option value="Upaisa">Upaisa</option>
+                                <option value="Bank Al falah">Bank Al falah</option>
+                                <option value="Meezan Bank">Meezan Bank</option>
+                                <option value="Askari Bank">Askari Bank</option>
+                                <option value="Soneri Bank">Soneri Bank</option>
+                                <option value="Khushhali Bank">Khushhali Bank</option>
+                                <option value="Summit Bank">Summit Bank</option>
+                                <option value="Bank of Khyber Limited">Bank of Khyber Limited</option>
+                                <option value="First Microfinance Bank">First Microfinance Bank</option>
+                                <option value="First Women Bank">First Women Bank</option>
+                                <option value="Zarai Taraqiati Bank">Zarai Taraqiati Bank</option>
+                                <option value="BankIslami">BankIslami</option>
+                                <option value="Silk Ba">Silk Bank</option>
+                                <option value="Habib Metro Bank">Habib Metro Bank</option>
+                                <option value="Standard Chartered Pakistan">Standard Chartered Pakistan</option>
+                                <option value="HBL">HBL</option>
+                                <option value="MCB">MCB</option>
+                                <option value="UBL">UBL</option>
+                                <option value="JS">JS</option>
+                            </select>
+        
                             @error('bank_name')
                                 <small class="text-danger">{{ $message }}</small>
                             @endif
                         </div>
-                       <!--  <div class="mb-3">
-                            <label class="form-label" for="bank_name">Withdraw Type</label>
-                            <input type="text" name="bank_name" id="bank_name" class="form-control" value="{{old('bank_name')}}" placeholder="">
-                            @error('bank_name')
+                        <div class="mb-3">
+                            <label class="form-label" for="account_title">Account Number</label>
+                            <input type="text" name="account_number" id="account_number" class="form-control" value="{{old('account_number')}}" placeholder="Enter Account Number">
+                            @error('account_number')
                                 <small class="text-danger">{{ $message }}</small>
                             @endif
-                        </div> -->
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="account_title">Account Title</label>
+                            <input type="text" name="account_title" id="account_title" class="form-control" value="{{old('account_title')}}" placeholder="Enter Account Title">
+                            @error('account_title')
+                                <small class="text-danger">{{ $message }}</small>
+                            @endif
+                        </div>
                         <button class="btn mb-3 btn-primary w-100" type="submit">Withdraw</button>
                     </form>      
                 </div>

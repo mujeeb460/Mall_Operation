@@ -59,10 +59,11 @@
                                         <thead>
                                             <tr>
                                                 <th>Transaction ID</th>
-                                                <th>withdraws Amount</th>
-                                                <th>Deposit Date</th>
+                                                <th>withdraw Amount</th>
+                                                <th>Withdraw Date</th>
                                                 <th>Bank</th>
-                                                <th>Slip</th>
+                                                <th>Account No.</th>
+                                                <th>Account Title</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
@@ -73,7 +74,8 @@
                                                     <td>Rs. {{ $withdraws->withdraw_amount }}</td>
                                                     <td>{{ $withdraws->withdraw_date }}</td>
                                                     <td>{{ $withdraws->bank }}</td>
-                                                    <td>view</td>
+                                                    <td>{{ $withdraws->account_number }}</td>
+                                                    <td>{{ $withdraws->account_title }}</td>
                                                     <td>
                                                         @if($withdraws->status == 0)
                                                             <span class="badge badge-primary">Pending</span>

@@ -43,6 +43,8 @@ Route::middleware(['auth:admin'])->post('/admin/logout', [AdminController::class
 
     Route::get('/admin_password', [AdminProfileController::class, 'admin_password'])->name('admin_password');
     Route::put('/update_admin_password', [AdminProfileController::class, 'update_admin_password'])->name('update_admin_password');
+
+    Route::get('/admin_help', [App\Http\Controllers\AdminController::class, 'admin_help'])->name('admin_help');
     
     });
 
@@ -71,6 +73,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/accept-order', [App\Http\Controllers\OrderController::class, 'acceptOrder'])->name('accept.order');
 
     Route::get('/order-history', [App\Http\Controllers\OrderController::class, 'orders_history'])->name('history.order');
+
+    Route::get('/help', [App\Http\Controllers\ProfileController::class, 'help'])->name('help');
 
 
     Route::resource('deposit', DepositController::class);

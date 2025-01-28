@@ -11,6 +11,8 @@ class Withdraw extends Model
         'withdraw_date',
         'transaction_id',
         'bank',
+        'account_number',
+        'account_title',
         'user_id',
         'status'
     ];

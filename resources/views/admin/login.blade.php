@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from wedo.dexignzone.com/xhtml/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Dec 2024 13:12:46 GMT -->
+<!-- Mirrored from wedo.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Dec 2024 13:09:07 GMT -->
 <head>
     
     <!-- Title -->
-    <title>Wedo - Ecommerce Mobile App Template ( Bootstrap + PWA )</title>
+    <title>Mall Operation</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
-    <meta name="theme-color" content="#FE4487">
+    <meta name="theme-color" content="#fb923c">
     <meta name="author" content="DexignZone">
     <meta name="robots" content="index, follow"> 
-    <meta name="keywords" content="android, ios, mobile, application template, progressive web app, ui kit, multiple color, dark layout">
-    <meta name="description" content="Revolutionize your online store with our Ecommerce App Template. Seamless shopping, secure payments, and personalized recommendations for an exceptional user experience">
-    <meta property="og:title" content="Wedo - Ecommerce Mobile App Template ( Bootstrap + PWA )">
-    <meta property="og:description" content="Revolutionize your online store with our Ecommerce App Template. Seamless shopping, secure payments, and personalized recommendations for an exceptional user experience.">
-    <meta property="og:image" content="social-image.png">
-    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="Mall Operation">
+    <meta name="description" content="Mall Operation Ecommerce Website">
+    <meta property="og:title" content="Mall Operation">
+    <meta property="og:description" content="Mall Operation">
+    <meta property="og:image" content="{{asset('assets/images/logo.png')}}">
+    <meta name="format-detection" content="">
 
     <!-- Favicons Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logo.png')}}">
     
     <!-- Globle Stylesheets -->
     

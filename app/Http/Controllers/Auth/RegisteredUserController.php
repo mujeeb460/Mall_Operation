@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'reference_code' => ['required', 'max:255'],
             'phone' => ['required', 'max:255', 'unique:'.User::class],
-            'password' => 'required|same:withdraw_password',
+            'password' => 'required|same:password_confirmation',
             'withdraw_password' => ['required'],
         ]);
 

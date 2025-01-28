@@ -42,6 +42,8 @@ class WithdrawController extends Controller
         $request->validate([
             'withdraw_amount' => ['required', 'integer'],
             'bank_name' => 'required',
+            'account_number' => 'required',
+            'account_title' => 'required'
         ]);
 
         $randomNumber = rand(10000000, 99999999); // Random number between 1000 and 9999
@@ -61,6 +63,8 @@ class WithdrawController extends Controller
                     'withdraw_date' => now(),
                     'transaction_id' => $randomNumber,
                     'bank' => $request->bank_name,
+                    'account_number' => $request->account_number,
+                    'account_title' => $request->account_title,
                     'user_id' => $user->id,
                 ]);
 

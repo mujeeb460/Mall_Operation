@@ -77,7 +77,7 @@
                     <a class="btn btn-light btn-sm" href="#">Top up</a>
                 </div>
                 <div class="col-12">
-                    <h3 class="text-white py-1">Rs. {{ auth()->user()->total_balance() }}</h3>
+                    <h3 class="text-white py-1" id="user-balance">Rs. {{ auth()->user()->total_balance() }}</h3>
                 </div>         
             </div>
             <div class="row shop-card p-3 m-2" style="background-color:">
@@ -131,7 +131,7 @@
                                                 <td>{{ $order->product_name }}</td>
                                                 <td>{{ $order->quantity }} units</td>
                                                 <td>Rs. {{ number_format($order->price, 2) }}</td>
-                                                <td>Rs. {{ number_format($order->commission, 2) }} ({{ $order->commission_rate }}%)</td>
+                                                <td>Rs. {{ number_format($order->commission, 2) }}</td>
                                                 <td>{{ $order->created_at->format('M d, Y H:i') }}</td>
                                             </tr>
                                         @endforeach
@@ -156,7 +156,7 @@
                 <div class="offcanvas-body">
                     <div class="text-center mb-3">
                         <div class="avatar avatar-xl mb-3" style="width: 80px; height: 80px; margin: auto;">
-                            <img src="https://via.placeholder.com/80" class="rounded-circle" alt="order-image" id="randomOrderImage">
+                            <img src="" class="rounded-circle" alt="order-image" id="randomOrderImage">
                         </div>
                         <h5 class="mb-2" id="orderNumber"></h5>
                     </div>
@@ -182,7 +182,7 @@
                         <div class="row justify-content-between">
                             <div class="col-auto">
                                 @if($upgraded_package && $upgraded_package->package && $upgraded_package->remaining_tasks > 0)
-                                    <button type="button" class="btn btn-primary" id="acceptOrderBtn">Accept Order</button>
+                                    <button type="button" class="btn btn-primary" id="acceptOrderBtn" data-order-price="0">Accept Order</button>
                                 @else
                                     <button type="button" class="btn btn-secondary" disabled>
                                         {{ !$upgraded_package || !$upgraded_package->package ? 'No Active Package' : 'No Tasks Remaining' }}
@@ -292,16 +292,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Random product names
         const products = [
-            "Smartphone Charger", "Laptop Charger", "Headphones", "Smart Watch", "Tablet Cover",
-            "Camera Cover", "Gaming Console", "Bluetooth Speaker", "Power Bank", "Wireless Earbuds"
+            "Smartphone Charger", "Laptop Charger", "Headphones", "Smart Watch", "Tablet Cover", 
+            "Camera Cover", "Gaming Console", "Bluetooth Speaker", "Power Bank", "Wireless Earbuds", 
+            "USB Cable", "Phone Case", "Screen Protector", "Earphone Holder", "Portable Fan", 
+            "Mini Bluetooth Speaker", "Charging Dock", "Keyboard Cover", "Phone Stand", "Car Mount Holder",
+            "Phone Holder", "Portable Charger", "LED Desk Lamp", "Cable Organizer", "Laptop Sleeve",
+            "Touchscreen Gloves", "Charger Adapter", "LED Ring Light", "Phone Cleaning Kit", "Travel Adapter",
+            "Phone Pop Socket", "Bluetooth Receiver", "AUX Cable", "Camera Lens Cleaner"
+
         ];
 
         // Generate random values
         const orderNumber = 'ORD-' + Math.floor(Math.random() * 1000000);
         const product = products[Math.floor(Math.random() * products.length)];
         const quantity = Math.floor(Math.random() * 5) + 1;
-        const price = Math.floor(Math.random() * minThreshold);
-        const commission = (price * (commissionRate / 100)).toFixed(2);
+        let price;
+        @if($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 3)
+            price = Math.floor(Math.random() * (15500 - 13000 + 1)) + 13000;
+            const commission = (price * (23 / 100)).toFixed(2);
+        @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 12)
+            price = Math.floor(Math.random() * (47500 - 42000 + 1)) + 42000;
+            const commission = (price * (26 / 100)).toFixed(2);
+        @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 13)
+            price = Math.floor(Math.random() * (57846 - 56500 + 1)) + 56500;
+            const commission = (price * (28 / 100)).toFixed(2);
+        @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 19)
+            price = Math.floor(Math.random() * (158464 - 157464 + 1)) + 157464;
+            const commission = (price * (29 / 100)).toFixed(2);
+        @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 22)
+            price = Math.floor(Math.random() * (197984 - 196984 + 1)) + 196984;
+            const commission = (price * (32 / 100)).toFixed(2);
+        @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 23)
+            price = Math.floor(Math.random() * (584678 - 582678 + 1)) + 582678;
+            const commission = (price * (48 / 100)).toFixed(2);
+        @else
+            price = Math.floor(Math.random() * minThreshold);
+            const commission = (price * (commissionRate / 100)).toFixed(2);
+        @endif
 
         // Create new order object
         return {
@@ -318,8 +345,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('productName').textContent = order.product;
         document.getElementById('orderQuantity').textContent = order.quantity + ' units';
         document.getElementById('orderPrice').textContent = 'Rs. ' + order.price;
-        document.getElementById('commission').textContent = 'Rs. ' + order.commission + ' (' + "{{ $upgraded_package && $upgraded_package->package ? $upgraded_package->package->commission_rate : 0 }}" + '%)';
-        document.getElementById('randomOrderImage').src = 'https://via.placeholder.com/80?text=' + order.product.charAt(0);
+        document.getElementById('commission').textContent = 'Rs. ' + order.commission;
+        document.getElementById('randomOrderImage').src = "{{asset('assets/images/products')}}/" + order.product+".png";
+        document.getElementById('acceptOrderBtn').setAttribute('data-order-price', order.price);
     }
 
     function toggleOffcanvas() {
@@ -347,26 +375,34 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleOffcanvas();
     });
 
-    acceptOrderBtn.addEventListener('click', function() {
-        // Get the order details
-        const orderNumber = document.getElementById('orderNumber').textContent.replace('Order #', '');
-        const product = document.getElementById('productName').textContent;
-        const quantity = parseInt(document.getElementById('orderQuantity').textContent);
-        const price = parseFloat(document.getElementById('orderPrice').textContent.replace('Rs. ', ''));
-        const commission = parseFloat(document.getElementById('commission').textContent.split(' ')[1]);
+    acceptOrderBtn.addEventListener('click', function(event) {
+        const orderPrice = parseFloat(this.getAttribute('data-order-price'));
+        const userBalance = parseFloat(document.getElementById('user-balance').innerText.replace('Rs. ', ''));
 
-        // Set form values
-        document.getElementById('formOrderNumber').value = orderNumber;
-        document.getElementById('formProduct').value = product;
-        document.getElementById('formQuantity').value = quantity;
-        document.getElementById('formPrice').value = price;
-        document.getElementById('formCommission').value = commission;
+        if (userBalance < orderPrice) {
+            event.preventDefault();
+            alert('Insufficient balance. Please recharge your balance.');
+        } else {
+            // Get the order details
+            const orderNumber = document.getElementById('orderNumber').textContent.replace('Order #', '');
+            const product = document.getElementById('productName').textContent;
+            const quantity = parseInt(document.getElementById('orderQuantity').textContent);
+            const price = parseFloat(document.getElementById('orderPrice').textContent.replace('Rs. ', ''));
+            const commission = parseFloat(document.getElementById('commission').textContent.split(' ')[1]);
 
-        // Close the popup
-        toggleOffcanvas();
+            // Set form values
+            document.getElementById('formOrderNumber').value = orderNumber;
+            document.getElementById('formProduct').value = product;
+            document.getElementById('formQuantity').value = quantity;
+            document.getElementById('formPrice').value = price;
+            document.getElementById('formCommission').value = commission;
 
-        // Submit the form
-        document.getElementById('orderForm').submit();
+            // Close the popup
+            toggleOffcanvas();
+
+            // Submit the form
+            document.getElementById('orderForm').submit();
+        }
     });
 
     // Close offcanvas when pressing ESC key

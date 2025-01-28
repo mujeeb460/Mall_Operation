@@ -80,7 +80,38 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="bank_name">Bank</label>
-                            <input type="text" name="bank_name" id="bank_name" class="form-control" value="{{old('bank_name')}}" placeholder="">
+                            <select name="bank_name" id="bank_name" class="form-control" required="">
+                                <option value="">Select Bank</option>
+                                <option value="Easypaisa">Easypaisa</option>
+                                <option value="Jazzcash">Jazzcash</option>
+                                <option value="Bank AL Habbib">Bank AL Habib</option>
+                                <option value="Allied">Allied</option>
+                                <option value="Sindh">Sindh</option>
+                                <option value="Bank of Panjab">Bank of Panjab</option>
+                                <option value="National Bank">National Bank</option>
+                                <option value="Nayapay">Nayapay</option>
+                                <option value="Sadapay">Sadapay</option>
+                                <option value="Faysal Bank">Faysal Bank</option>
+                                <option value="Upaisa">Upaisa</option>
+                                <option value="Bank Al falah">Bank Al falah</option>
+                                <option value="Meezan Bank">Meezan Bank</option>
+                                <option value="Askari Bank">Askari Bank</option>
+                                <option value="Soneri Bank">Soneri Bank</option>
+                                <option value="Khushhali Bank">Khushhali Bank</option>
+                                <option value="Summit Bank">Summit Bank</option>
+                                <option value="Bank of Khyber Limited">Bank of Khyber Limited</option>
+                                <option value="First Microfinance Bank">First Microfinance Bank</option>
+                                <option value="First Women Bank">First Women Bank</option>
+                                <option value="Zarai Taraqiati Bank">Zarai Taraqiati Bank</option>
+                                <option value="BankIslami">BankIslami</option>
+                                <option value="Silk Ba">Silk Bank</option>
+                                <option value="Habib Metro Bank">Habib Metro Bank</option>
+                                <option value="Standard Chartered Pakistan">Standard Chartered Pakistan</option>
+                                <option value="HBL">HBL</option>
+                                <option value="MCB">MCB</option>
+                                <option value="UBL">UBL</option>
+                                <option value="JS">JS</option>
+                            </select>
                             @error('bank_name')
                                 <small class="text-danger">{{ $message }}</small>
                             @endif

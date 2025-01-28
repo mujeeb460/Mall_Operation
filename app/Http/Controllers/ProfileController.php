@@ -98,4 +98,12 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Password successfully updated.');
     }
+
+
+    public function help()
+    {
+        $user = Auth::user();
+        return view('user.help', [
+        ]);
+    }
 }
