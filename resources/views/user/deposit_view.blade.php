@@ -67,7 +67,9 @@
                                                     <td>{{ $deposit->deposit_date }}</td>
                                                     <td>{{ $deposit->bank }}</td>
                                                     <td>
+                                                        @if($deposit->deposit_slip)
                                                         <a href="javascript:void(0)" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#confirmModal{{$deposit->id}}"> <i class="fa fa-eye"></i></a>
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         @if($deposit->status == 0)

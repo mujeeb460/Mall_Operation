@@ -55,23 +55,30 @@ class WithdrawController extends Controller
 
         if($request->withdraw_amount <= $account_balance)
         {
-            if($upgrade->status == 0)
+            if(empty($upgrade) == False)
             {
-                Withdraw::insert([
-                    'withdraw_amount' => $request->withdraw_amount,
-                    'withdraw_date' => $request->deposit_date,
-                    'withdraw_date' => now(),
-                    'transaction_id' => $randomNumber,
-                    'bank' => $request->bank_name,
-                    'account_number' => $request->account_number,
-                    'account_title' => $request->account_title,
-                    'user_id' => $user->id,
-                ]);
+                if($upgrade->status == 0)
+                {
+                    Withdraw::insert([
+                        'withdraw_amount' => $request->withdraw_amount,
+                        'withdraw_date' => $request->deposit_date,
+                        'withdraw_date' => now(),
+                        'transaction_id' => $randomNumber,
+                        'bank' => $request->bank_name,
+                        'account_number' => $request->account_number,
+                        'account_title' => $request->account_title,
+                        'user_id' => $user->id,
+                    ]);
 
-                return redirect('withdraw')->with('success', 'Withdraw successfully!');
+                    return redirect('withdraw')->with('success', 'Withdraw successfully!');
+                }else{
+
+                     return redirect('withdraw')->with(['error' => 'You have to complete your level.']);
+                }
             }else{
 
-                 return redirect('withdraw')->with(['error' => 'You have to complete your level.']);
+                return redirect('withdraw')->with(['error' => 'You have to upgrade package first.']);
+
             }
         }else{
 

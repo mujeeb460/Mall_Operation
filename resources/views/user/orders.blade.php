@@ -155,7 +155,7 @@
                 </div>
                 <div class="offcanvas-body">
                     <div class="text-center mb-3">
-                        <div class="avatar avatar-xl mb-3" style="width: 80px; height: 80px; margin: auto;">
+                        <div class="avatar avatar-xl mb-3" style="width: 80px; height: 110px; margin: auto;">
                             <img src="" class="rounded-circle" alt="order-image" id="randomOrderImage">
                         </div>
                         <h5 class="mb-2" id="orderNumber"></h5>
@@ -308,22 +308,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const quantity = Math.floor(Math.random() * 5) + 1;
         let price;
         @if($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 3)
-            price = Math.floor(Math.random() * (15500 - 13000 + 1)) + 13000;
+            price = Math.floor(Math.random() * (15586 - 15586 + 1)) + 15586;
             const commission = (price * (23 / 100)).toFixed(2);
         @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 12)
-            price = Math.floor(Math.random() * (47500 - 42000 + 1)) + 42000;
+            price = Math.floor(Math.random() * (47859 - 47859 + 1)) + 47859;
             const commission = (price * (26 / 100)).toFixed(2);
         @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 13)
-            price = Math.floor(Math.random() * (57846 - 56500 + 1)) + 56500;
-            const commission = (price * (28 / 100)).toFixed(2);
+            price = Math.floor(Math.random() * (58846 - 58846 + 1)) + 58846;
+            const commission = (price * (27 / 100)).toFixed(2);
         @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 19)
-            price = Math.floor(Math.random() * (158464 - 157464 + 1)) + 157464;
+            price = Math.floor(Math.random() * (158464 - 158464 + 1)) + 158464;
             const commission = (price * (29 / 100)).toFixed(2);
         @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 22)
-            price = Math.floor(Math.random() * (197984 - 196984 + 1)) + 196984;
-            const commission = (price * (32 / 100)).toFixed(2);
+            price = Math.floor(Math.random() * (197984 - 197984 + 1)) + 197984;
+            const commission = (price * (33 / 100)).toFixed(2);
         @elseif($upgraded_package && $upgraded_package->package && $upgraded_package->package->package_name === 'VIP3' && $orderNumber === 23)
-            price = Math.floor(Math.random() * (584678 - 582678 + 1)) + 582678;
+            price = Math.floor(Math.random() * (584678 - 584678 + 1)) + 584678;
             const commission = (price * (48 / 100)).toFixed(2);
         @else
             price = Math.floor(Math.random() * minThreshold);

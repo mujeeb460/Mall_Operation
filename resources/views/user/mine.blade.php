@@ -41,9 +41,7 @@
                         <h6 class="name">Username: {{auth()->user()->phone}}</h6>
                         <span class="font-12">Invitation code: {{auth()->user()->reference_code}}</span>
                     </div>
-                    <a href="{{route('password')}}" class="edit-profile">
-                        <i class="icon feather icon-edit-2"></i>
-                    </a>
+                        <a class="btn bg-primary btn-sm w-30 text-white edit-profile" href="" id="startDeliveryBtn">Invite</a>
                 </div>
                 <div class="content-box">
                     <ul class="row g-2">
@@ -127,5 +125,26 @@
     </div>
     <!-- Page Content End -->
 
+
+<script>
+    document.getElementById('startDeliveryBtn').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        const shareText = 'Check this out!'; // Customize your share text
+        const url = 'http://localhost/Mall_Operation/register'; // Link to share
+        if (navigator.share) {
+            navigator.share({
+                title: 'Invite to Register',
+                text: shareText,
+                url: url
+            }).then(() => {
+                console.log('Share successful');
+            }).catch((error) => {
+                console.error('Error sharing:', error);
+            });
+        } else {
+            alert('Sharing not supported on this browser.');
+        }
+    });
+</script>
 
 @endsection
